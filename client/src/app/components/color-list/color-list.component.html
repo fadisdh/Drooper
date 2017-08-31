@@ -1,0 +1,8 @@
+<md-grid-list cols="4" rowHeight="1:1" gutterSize="1px">
+  <md-grid-tile *ngFor="let color of colors" [ngClass]="{active: color.name == value}">
+    <a class="color" (click)="onSelect(color)">
+      <div class="code" [style.background]="color.code"></div>
+      <h3 class="name">{{ color.name }}</h3>
+    </a>
+  </md-grid-tile>
+</md-grid-list>

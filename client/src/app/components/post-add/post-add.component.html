@@ -1,0 +1,59 @@
+<div [ngSwitch]="step" class="content">
+  <nav #nav class="navigation">
+    <div class="wrapper" [style.width.px]="steps.length * navItemWidth">
+      <a class="step" *ngFor="let s of steps; let i = index" (click)="goto(i);" [ngClass]="{active: i <= step}" [style.width.px]="navItemWidth">
+        <div class="bar half"></div>
+        <div class="bar half2" [ngClass]="{active: i < step}"></div>
+        <div class="point">{{ i + 1 }}</div>
+        <p>{{ s }}</p>
+      </a>
+    </div>
+  </nav>
+
+  <div *ngSwitchCase="0">
+    <make-list (select)="makeSelected($event)" [value]="post.make"></make-list>
+  </div>
+  <div *ngSwitchCase="1">
+    <model-list (select)="modelSelected($event)" [make]="this.post.make" [value]="this.post.model" [showAll]="false"></model-list>
+  </div>
+  <div *ngSwitchCase="2">
+    <year-list (select)="yearSelected($event)" [value]="post.year" [showAll]="false" [range]="false"></year-list>
+  </div>
+  <div *ngSwitchCase="3">
+    <color-list (select)="colorSelected($event)" [value]="this.post.color"></color-list>
+  </div>
+  <div *ngSwitchCase="4">
+    <car-form-info (submit)="infoFormSubmited($event)" [value]="post.mainInfo"></car-form-info>
+  </div>
+  <div *ngSwitchCase="5">
+    <car-form-engine (submit)="engineFormSubmited($event)" [value]="post.engineInfo"></car-form-engine>
+  </div>
+  <div *ngSwitchCase="6">
+    <option-list [options]="technologyOptions" (change)="optionsCahnged('technologyOptions', $event)"></option-list>
+    <button md-fab (click)="next()" color="primary"><md-icon>chevron_right</md-icon></button>
+  </div>
+  <div *ngSwitchCase="7">
+    <option-list [options]="exteriorOptions" (change)="optionsCahnged('exteriorOptions', $event)"></option-list>
+    <button md-fab (click)="next()" color="primary"><md-icon>chevron_right</md-icon></button>
+  </div>
+  <div *ngSwitchCase="8">
+    <option-list [options]="interiorOptions" (change)="optionsCahnged('interiorOptions', $event)"></option-list>
+    <button md-fab (click)="next()" color="primary"><md-icon>chevron_right</md-icon></button>
+  </div>
+  <div *ngSwitchCase="9">
+    <option-list [options]="saftyOptions" (change)="optionsCahnged('saftyOptions', $event)"></option-list>
+    <button md-fab (click)="next()" color="primary"><md-icon>chevron_right</md-icon></button>
+  </div>
+  <div *ngSwitchCase="10">
+    <car-body></car-body>
+  </div>
+  <div *ngSwitchCase="11">
+    <car-form-post (submit)="postFormSubmited($event)" [value]="post.postInfo"></car-form-post>
+  </div>
+  <div *ngSwitchCase="12">
+    Pictures
+  </div>
+  <div *ngSwitchCase="13">
+    Publish
+  </div>
+</div>

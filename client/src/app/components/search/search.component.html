@@ -1,0 +1,14 @@
+<md-tab-group mat-stretch-tabs>
+  <md-tab label="Car Make">
+    <car-selector></car-selector>
+  </md-tab>
+  <md-tab label="Car Price">
+    <div class="price-container">
+      <nouislider [config]="sliderConfig"
+                  [(ngModel)]="priceRange"
+                  [style]="{height: '500px'}">
+      </nouislider>
+
+    </div>
+  </md-tab>
+</md-tab-group>

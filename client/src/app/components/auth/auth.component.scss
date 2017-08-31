@@ -1,0 +1,13 @@
+md-tab-group{
+  box-sizing: border-box;
+  height: 100%;
+
+  md-tab{
+    height: 100%;
+    overflow: auto;
+  }
+
+  .content{
+    padding-top: 16px;
+  }
+}

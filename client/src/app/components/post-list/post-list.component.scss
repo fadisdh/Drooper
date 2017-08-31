@@ -1,0 +1,19 @@
+.fitlers{
+  margin: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  a{
+    display: inline-block;
+    padding: 8px;
+    margin: 3px;
+    border-radius: 3px;
+    border: 1px solid #CCC;
+    color: #333;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    background: #FFF;
+  }
+}

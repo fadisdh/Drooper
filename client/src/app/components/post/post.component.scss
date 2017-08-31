@@ -1,0 +1,28 @@
+md-card.post{
+  position: relative;
+  margin: 8px 0;
+
+  md-card-title{
+    margin: 2px 0 0;
+  }
+
+  md-card-subtitle{
+    margin: 4px 0 0;
+  }
+
+  h3{
+    font-size: 14px;
+    margin: 0 0 8px;
+  }
+
+  h4{
+    font-size: 12px;
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.54);
+    margin: 0;
+  }
+
+  .price {
+    color: #E91E63;
+  }
+}

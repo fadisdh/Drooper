@@ -1,0 +1,11 @@
+<md-list>
+  <md-list-item *ngFor="let option of options">
+    <md-checkbox [checked]="option.value" color="primary" [(ngModel)]="option.value">
+      <input type="text" [(ngModel)]="option.title" [disabled]="option.disabled" (change)="onTitleChanged(option)" (blur)="onTitleChanged(option)" [focus]="option.focus">
+    </md-checkbox>
+  </md-list-item>
+  <md-list-item (click)="addOption()">
+    <md-icon>add</md-icon>
+    Add a new option
+  </md-list-item>
+</md-list>

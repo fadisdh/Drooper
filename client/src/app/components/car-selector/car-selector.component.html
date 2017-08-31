@@ -1,0 +1,5 @@
+<div [ngSwitch]="step">
+  <make-list *ngSwitchCase="1" (select)="onMakeSelect($event)"></make-list>
+  <model-list *ngSwitchCase="2" [make]="make" (select)="onModelSelect($event)"></model-list>
+  <year-list *ngSwitchCase="3" (select)="onYearSelect($event)"></year-list>
+</div>

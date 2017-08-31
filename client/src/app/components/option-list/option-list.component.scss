@@ -1,0 +1,25 @@
+md-list{
+  md-list-item{
+    border-bottom: 1px solid #EEE;
+
+    md-checkbox{
+      display: block;
+    }
+
+    md-icon{
+      display: inline-block;
+      margin-right: 24px;
+    }
+
+    input{
+      width: 80%;
+      font-size: 14px;
+      margin-left: 24px;
+      outline: none;
+
+      &:focus{
+        outline: none;
+      }
+    }
+  }
+}

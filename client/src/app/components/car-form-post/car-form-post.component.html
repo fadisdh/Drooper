@@ -1,0 +1,30 @@
+<form class="form" (submit)="onSubmit()">
+  <div class="input-container">
+    <label>Post Title</label>
+    <input type="text" name="title" [(ngModel)]="data.title">
+  </div>
+
+  <div class="input-container">
+    <label>Price</label>
+    <input type="text" name="price" currencyMask [options]="{prefix: 'JOD ', precision: 0, align: 'left'}" [(ngModel)]="data.price">
+  </div>
+
+  <div class="input-container">
+    <label>Notes</label>
+    <textarea name="notes" rows="8" [(ngModel)]="data.notes"></textarea>
+  </div>
+
+  <div class="input-container">
+    <label>Location</label>
+    <select name="city" [(ngModel)]="data.city">
+      <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+    </select>
+  </div>
+
+  <div class="input-container">
+    <label>Phone Number</label>
+    <input type="text" name="phone" [textMask]="{mask: masks.phone, guide: false}" [(ngModel)]="data.phone">
+  </div>
+
+  <button md-raised-button type="submit" class="primary">Next <md-icon>chevron_right</md-icon></button>
+</form>

@@ -1,0 +1,28 @@
+.search{
+  margin: 16px;
+  border: 1px solid #CCC;
+  padding: 8px;
+  color: #666;
+  border-radius: 2px;
+  background: #FFF;
+
+  md-icon{
+    position: relative;
+    top: 4px;
+    display: inline-block;
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    padding: 0;
+    margin-right: 8px;
+  }
+
+  span{
+    position: relative;
+    top: -2px;
+    display: inline-block;
+    line-height: 24px;
+    height: 24px;
+  }
+}

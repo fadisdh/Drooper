@@ -1,0 +1,18 @@
+<form *ngIf="!done" [formGroup]="formGroup" (submit)="login($event)" class="form">
+  <div class="input-container">
+    <input type="email"
+           placeholder="Email"
+           name="email"
+           formControlName="email">
+  </div>
+  <div class="input-container">
+    <input type="password"
+           placeholder="Password"
+           name="password"
+           formControlName="password">
+  </div>
+  <div class="forget">
+    <a href="">Forget your password?</a>
+  </div>
+  <button [disabled]="!formGroup.valid" md-raised-button type="submit" class="primary">Login</button>
+</form>

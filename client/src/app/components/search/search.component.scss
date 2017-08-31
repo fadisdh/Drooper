@@ -1,0 +1,18 @@
+md-tab-group{
+  box-sizing: border-box;
+  height: 100%;
+
+  md-tab{
+    height: 100%;
+    overflow: auto;
+  }
+}
+
+.price-container{
+  width: 1px;
+  margin: 42px auto;
+
+  nouislider{
+    height: 500px;
+  }
+}

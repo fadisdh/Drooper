@@ -1,0 +1,11 @@
+<div *ngIf="showFilters" class="fitlers">
+  <a (click)="openFilter('make')">{{ filters.make ? filters.make : 'All Makes' }}</a>
+  <a (click)="openFilter('model')">{{ filters.model ? filters.model : 'All Models' }}</a>
+  <a (click)="openFilter('years')">{{ filters.minYear || filters.maxYear ? filters.minYear == filters.maxYear ? filters.minYear : filters.minYear + '-' + filters.maxYear : 'All Years' }}</a>
+  <a (click)="openFilter('price')">{{ filters.minPrice || filters.maxPrice ? filters.minPrice + '-' + filters.maxPrice : 'All Prices' }}</a>
+</div>
+<post *ngFor="let post of posts" [post]="post"></post>
+<modal *ngIf="filter" (close)="filterChanged()" [@slide]>
+  <filters [filter]="filter" [make]="filters.make" (result)="filterChanged($event)"></filters>
+</modal>
+<error *ngIf="posts.length == 0" >No cars found</error>

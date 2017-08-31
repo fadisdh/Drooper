@@ -1,0 +1,8 @@
+<div class="search" (click)="openSearch()">
+  <md-icon>search</md-icon>
+  <span>Search for your car ...</span>
+</div>
+<modal *ngIf="showSearch" (close)="closeSearch()" [@slide]>
+  <search></search>
+</modal>
+<post-list [showFilters]="false"></post-list>

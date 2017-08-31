@@ -1,0 +1,78 @@
+.container{
+  position: relative;
+  margin: 24px 96px;
+  height: 100%;
+}
+
+.car{
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.condition{
+  position: absolute;
+  display: inline-block;
+  border-radius: 99px;
+  color: #FFF;
+  background: #5C0000;
+
+  md-icon{
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+    line-height: 24px;
+    padding: 8px;
+  }
+
+  .check{
+    display: none;
+  }
+
+  .error{
+    display: block;
+  }
+
+  &.active{
+    background: #4CAF50;
+
+    .check{
+      display: block;
+    }
+
+    .error{
+      display: none;
+    }
+  }
+
+  &.topLeft{
+    top: 16px;
+    left: 16px;
+  }
+
+  &.topRight{
+    top: 16px;
+    right: 16px;
+  }
+
+  &.bottomLeft{
+    bottom: 16px;
+    left: 16px;
+  }
+
+  &.bottomRight{
+    bottom: 16px;
+    right: 16px;
+  }
+}
+
+.text{
+  text-align: center;
+  font-size: 18px;
+}
+
+.preview{
+  display: block;
+  margin: 16px auto;
+  width: 250px;
+}

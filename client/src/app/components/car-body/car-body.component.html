@@ -1,0 +1,24 @@
+<div class="container">
+  <img class="car" src="/assets/images/car-body.svg" alt="">
+  <div class="condition topLeft" (click)="toggleGood('topLeft')" [ngClass]="{active: this.condition.topLeft}">
+    <md-icon class="check">check</md-icon>
+    <md-icon class="error">close</md-icon>
+  </div>
+  <div class="condition topRight" (click)="toggleGood('topRight')" [ngClass]="{active: this.condition.topRight}">
+    <md-icon class="check">check</md-icon>
+    <md-icon class="error">close</md-icon>
+  </div>
+  <div class="condition bottomLeft" (click)="toggleGood('bottomLeft')" [ngClass]="{active: this.condition.bottomLeft}">
+    <md-icon class="check">check</md-icon>
+    <md-icon class="error">close</md-icon>
+  </div>
+  <div class="condition bottomRight" (click)="toggleGood('bottomRight')" [ngClass]="{active: this.condition.bottomRight}">
+    <md-icon class="check">check</md-icon>
+    <md-icon class="error">close</md-icon>
+  </div>
+</div>
+<div class="text">{{ goods }} Good Chassis</div>
+<div class="file">
+  <input type="file" (change)="fileUpload($event)">
+  <img *ngIf="img" [src]="img" class="preview">
+</div>

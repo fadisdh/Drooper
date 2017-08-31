@@ -1,0 +1,26 @@
+md-grid-list{
+  md-grid-tile{
+    .color{
+      text-align: center;
+
+      .code{
+        display: block;
+        width: 42px;
+        height: 42px;
+        border-radius: 99px;
+        margin: 0 auto;
+      }
+
+      .name{
+        font-size: 14px;
+        font-weight: normal;
+        margin: 8px 0 0;
+        padding: 0;
+      }
+    }
+
+    &.active{
+      background: #DDD;
+    }
+  }
+}

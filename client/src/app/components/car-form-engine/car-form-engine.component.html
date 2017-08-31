@@ -1,0 +1,31 @@
+<form class="form" (submit)="onSubmit()">
+  <div class="input-container">
+    <label>Engine Type</label>
+    <select name="engineType" [(ngModel)]="data.engineTypes">
+      <option *ngFor="let engineType of engineTypes" [value]="engineType">{{ engineType }}</option>
+    </select>
+  </div>
+
+  <div class="input-container">
+    <label>Cyender</label>
+    <select name="cylender" [(ngModel)]="data.cylender">
+      <option *ngFor="let cylender of cylenders" [value]="cylender">{{ cylender }}</option>
+    </select>
+  </div>
+
+  <div class="input-container">
+    <label>Transmission</label>
+    <select name="transmission" [(ngModel)]="data.transmission">
+      <option *ngFor="let transmission of transmissions" [value]="transmission">{{ transmission }}</option>
+    </select>
+  </div>
+
+  <div class="input-container">
+    <label>Drive Type</label>
+    <select name="driveType" [(ngModel)]="data.driveType">
+      <option *ngFor="let driveType of driveTypes" [value]="driveType">{{ driveType }}</option>
+    </select>
+  </div>
+
+  <button md-raised-button type="submit" class="primary">Next <md-icon>chevron_right</md-icon></button>
+</form>

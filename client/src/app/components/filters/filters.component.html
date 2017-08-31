@@ -1,0 +1,5 @@
+<div [ngSwitch]="filter" class="filter">
+  <make-list *ngSwitchCase="'make'" (select)="makeSelected($event)"></make-list>
+  <model-list *ngSwitchCase="'model'" [make]="make" (select)="modelSelected($event)"></model-list>
+  <year-list *ngSwitchCase="'years'" (select)="yearsSelected($event)"></year-list>
+</div>

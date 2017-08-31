@@ -1,0 +1,48 @@
+<form (submit)="onSubmit($event)" [formGroup]="formGroup"  class="form">
+  <div class="input-container" [ngClass]="nameCheck">
+    <input type="text"
+           name="name"
+           placeholder="Display Name"
+           formControlName="name"
+           >
+    <div class="icon" [ngSwitch]="nameCheck">
+      <md-spinner *ngSwitchCase="'loading'"></md-spinner>
+      <md-icon *ngSwitchCase="'avaliable'">check_circle</md-icon>
+      <md-icon *ngSwitchCase="'not-avaliable'">error</md-icon>
+      <md-icon *ngSwitchCase="'error'">error</md-icon>
+    </div>
+  </div>
+  <div class="input-container" [ngClass]="emailCheck">
+    <input type="email"
+           name="email"
+           placeholder="Email"
+           formControlName="email">
+    <div class="icon" [ngSwitch]="emailCheck">
+      <md-spinner *ngSwitchCase="'loading'"></md-spinner>
+      <md-icon *ngSwitchCase="'avaliable'">check_circle</md-icon>
+      <md-icon *ngSwitchCase="'not-avaliable'">error</md-icon>
+      <md-icon *ngSwitchCase="'error'">error</md-icon>
+    </div>
+  </div>
+  <div class="input-container two">
+    <div>
+      <input type="password"
+             name="password"
+             placeholder="Password"
+             formControlName="password">
+    </div>
+    <div>
+      <input type="password"
+             name="password_confirmation"
+             placeholder="Confirm Password"
+             formControlName="password_confirmation">
+    </div>
+  </div>
+  <div class="input-container">
+    <input type="phone"
+           name="phone"
+           placeholder="Phone Number"
+           formControlName="phone">
+  </div>
+  <button [disabled]="!formGroup.valid" md-raised-button class="primary">Register</button>
+</form>

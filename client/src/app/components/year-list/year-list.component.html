@@ -1,0 +1,10 @@
+<md-grid-list class="years" cols="6" rowHeight="1:1" gutterSize="1px">
+  <md-grid-tile *ngIf="showAll" [ngClass]="{'active': !max && !min}" colspan="6" (click)="selectAll()">All Years</md-grid-tile>
+  <md-grid-tile
+    [ngClass]="{'active': year == max || year == min || (min && max && year < max && year > min) }"
+    *ngFor="let year of years"
+    (click)="onSelect(year)">
+    {{ year }}
+  </md-grid-tile>
+</md-grid-list>
+<button *ngIf="range" md-fab (click)="done()" color="primary"><md-icon>check</md-icon></button>

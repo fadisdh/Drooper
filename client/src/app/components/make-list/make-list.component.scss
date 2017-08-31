@@ -1,0 +1,32 @@
+.search{
+  margin-top: 16px;
+}
+
+md-grid-list{
+  md-grid-tile{
+    text-align: center;
+    background: #F7F7F7;
+
+    .make-box{
+      padding: 5px;
+
+      .img{
+        max-width: 70%;
+        margin: 5px auto;
+
+        img{
+          width: 100%;
+        }
+      }
+
+      h3{
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+
+    &.active{
+      background: #DDD;
+    }
+  }
+}

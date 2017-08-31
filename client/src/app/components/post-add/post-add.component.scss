@@ -1,0 +1,66 @@
+.content{
+  margin: 0 16px;
+}
+
+.navigation{
+  overflow-x: hidden;
+  font-size: 12px;
+  margin: 0 -16px 16px;
+
+  a{
+    position: relative;
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 8px 0;
+    text-align: center;
+    color: #AAA;
+
+    &.active{
+      .point, .bar.half2.active, .bar.half{
+        background: #AAA;
+        color: #FFF;
+        border-color: #AAA;
+      }
+    }
+
+    .bar{
+      position: absolute;
+      top: 22px;
+      width: 100%;
+      height: 1px;
+      background: #CCC;
+
+      &.half{
+        width: 50%;
+      }
+
+      &.half2{
+        left: 50%;
+        width: 50%;
+      }
+    }
+
+    &:first-child .bar.half, &:last-child .bar.half2{
+      background: transparent !important;
+    }
+
+    .point{
+      position: relative;
+      width: 28px;
+      height: 28px;
+      line-height: 28px;
+      text-align: center;
+      font-size: 10px;
+      color: #666;
+      border-radius: 16px;
+      border: 1px solid #CCC;
+      background: #FFF;
+      margin: 0 auto;
+    }
+
+    p{
+      margin: 0;
+      padding: 8px 0 0;
+    }
+  }
+}
