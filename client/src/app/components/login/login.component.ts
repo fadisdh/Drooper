@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { UserService } from './../../services/user.service';
 import { User } from './../../models/user';
 
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   @Output() error: EventEmitter<Error> = new EventEmitter();
   private formGroup: FormGroup;
 
-  constructor(private userService: UserService, private formBuilder: FormBuilder, private SnackBar: MdSnackBar) { }
+  constructor(private userService: UserService, private formBuilder: FormBuilder, private SnackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.formGroup = this.createForm();
@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
     this.userService.login(this.formGroup.value.email, this.formGroup.value.password).subscribe((data: {[key: string]: any}) => {
       this.success.emit(data.user);
       this.userService.closeForm();
-      this.SnackBar.open(`Welcome back ${data.user.name}`, '', { duration: 3000 })
     },
   (error: Error) => {
     this.error.emit(error);

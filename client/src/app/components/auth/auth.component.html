@@ -1,12 +1,12 @@
-<md-tab-group mat-stretch-tabs [selectedIndex]="selectedIndex">
-  <md-tab label="Login">
+<mat-tab-group mat-stretch-tabs [selectedIndex]="tab == 'register' ? 1 : 0">
+  <mat-tab label="Login">
     <div class="content">
       <login></login>
     </div>
-  </md-tab>
-  <md-tab label="Register">
+  </mat-tab>
+  <mat-tab label="Register">
     <div class="content">
       <register></register>
     </div>
-  </md-tab>
-</md-tab-group>
+  </mat-tab>
+</mat-tab-group>

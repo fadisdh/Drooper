@@ -1,0 +1,125 @@
+<div *ngIf="post" class="container">
+  <mat-card class="post" mat-ink-ripple="#333">
+    <mat-card-header>
+      <img mat-card-avatar [src]="post.user && post.user.image ? post.user.image : '/assets/images/default-user.jpg'" alt="">
+      <mat-card-title class="name">{{ post.user ? post.user.name : 'Drooper User' }}</mat-card-title>
+      <mat-card-subtitle>{{ post.updated_at | fromNow }}</mat-card-subtitle>
+    </mat-card-header>
+    <ngx-carousel [inputs]="carousel">
+          <ngx-item NgxCarouselItem *ngFor="let img of post.images">
+            <img [src]="post.images ? config.host + img.large : '/assets/images/default-post.jpg'" alt="">
+          </ngx-item>
+          <button NgxCarouselPrev class="nav left">&lt;</button>
+          <button NgxCarouselNext class="nav right">&gt;</button>
+    </ngx-carousel>
+
+    <mat-card-content>
+      <h3 class="title">{{ post.year }} {{ post.make }} {{ post.model }} - <span class="price">{{ post.price | currency:'JD' }}</span></h3>
+      <h4 class="location">{{ post.city }}, {{ post.country }}</h4>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="post" mat-ink-ripple="#333">
+    <mat-card-content>
+      <ul class="data-list">
+        <li>
+          <span class="key">Make:</span>
+          <span class="value">{{ post.make }}</span>
+        </li>
+        <li>
+          <span class="key">Model:</span>
+          <span class="value">{{ post.model }}</span>
+        </li>
+        <li>
+          <span class="key">Year:</span>
+          <span class="value">{{ post.year }}</span>
+        </li>
+        <li>
+          <span class="key">color:</span>
+          <span class="color" [ngStyle]="{ backgroundColor: colorCode }"></span>
+          <span class="value">{{ post.color }}</span>
+        </li>
+        <li>
+          <span class="key">Body Style:</span>
+          <span class="value">{{ post.bodyStyle }}</span>
+        </li>
+        <li>
+          <span class="key">Kilometers:</span>
+          <span class="value">{{ post.kilometers }}</span>
+        </li>
+        <li>
+          <span class="key">origin:</span>
+          <span class="value">{{ post.origin }}</span>
+        </li>
+        <li>
+          <span class="key">Condition:</span>
+          <span class="value">{{ post.condition }}</span>
+        </li>
+        <li>
+          <span class="key">Engine Type:</span>
+          <span class="value">{{ post.engineType }}</span>
+        </li>
+        <li>
+          <span class="key">Cylender:</span>
+          <span class="value">{{ post.cylender }}</span>
+        </li>
+        <li>
+          <span class="key">Transmission:</span>
+          <span class="value">{{ post.transmission }}</span>
+        </li>
+        <li>
+          <span class="key">Drive Type:</span>
+          <span class="value">{{ post.driveType }}</span>
+        </li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-content>
+      <ul class="data-list">
+        <li class="title">
+          Technology Options:
+        </li>
+        <li>
+          {{ post.technologyOptions.join(', ') }}
+        </li>
+        <li class="title">
+          Interior Options:
+        </li>
+        <li>
+          {{ post.exteriorOptions.join(', ') }}
+        </li>
+        <li class="title">
+          Exterior Options:
+        </li>
+        <li>
+          {{ post.interiorOptions.join(', ') }}
+        </li>
+        <li class="title">
+          Safty Options:
+        </li>
+        <li>
+          {{ post.saftyOptions.join(', ') }}
+        </li>
+        <li class="title">
+          Other Notes:
+        </li>
+        <li>
+          <span>
+            {{ post.notes }}
+          </span>
+        </li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="post" mat-ink-ripple="#333">
+    <mat-card-content>
+      <h4>Car Body:</h4>
+      <car-body [value]="{report: post.bodyReport, condition: post.bodyCondition}" disabled="true"></car-body>
+    </mat-card-content>
+  </mat-card>
+
+  <button class="fab" mat-fab color="primary" (click)="call()"><mat-icon>phone</mat-icon></button>
+</div>

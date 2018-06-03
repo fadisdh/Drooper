@@ -6,10 +6,10 @@
            formControlName="name"
            >
     <div class="icon" [ngSwitch]="nameCheck">
-      <md-spinner *ngSwitchCase="'loading'"></md-spinner>
-      <md-icon *ngSwitchCase="'avaliable'">check_circle</md-icon>
-      <md-icon *ngSwitchCase="'not-avaliable'">error</md-icon>
-      <md-icon *ngSwitchCase="'error'">error</md-icon>
+      <mat-spinner *ngSwitchCase="'loading'"></mat-spinner>
+      <mat-icon *ngSwitchCase="'avaliable'">check_circle</mat-icon>
+      <mat-icon *ngSwitchCase="'not-avaliable'">error</mat-icon>
+      <mat-icon *ngSwitchCase="'error'">error</mat-icon>
     </div>
   </div>
   <div class="input-container" [ngClass]="emailCheck">
@@ -18,10 +18,10 @@
            placeholder="Email"
            formControlName="email">
     <div class="icon" [ngSwitch]="emailCheck">
-      <md-spinner *ngSwitchCase="'loading'"></md-spinner>
-      <md-icon *ngSwitchCase="'avaliable'">check_circle</md-icon>
-      <md-icon *ngSwitchCase="'not-avaliable'">error</md-icon>
-      <md-icon *ngSwitchCase="'error'">error</md-icon>
+      <mat-spinner *ngSwitchCase="'loading'"></mat-spinner>
+      <mat-icon *ngSwitchCase="'avaliable'">check_circle</mat-icon>
+      <mat-icon *ngSwitchCase="'not-avaliable'">error</mat-icon>
+      <mat-icon *ngSwitchCase="'error'">error</mat-icon>
     </div>
   </div>
   <div class="input-container two">
@@ -44,5 +44,5 @@
            placeholder="Phone Number"
            formControlName="phone">
   </div>
-  <button [disabled]="!formGroup.valid" md-raised-button class="primary">Register</button>
+  <button [disabled]="!formGroup.valid" mat-raised-button class="primary">Register</button>
 </form>

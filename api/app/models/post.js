@@ -16,12 +16,62 @@ var PostSchema = new Schema({
     type: Number,
     required: 'year is required'
   },
-  image: {
+  color: {
     type: String,
-    required: 'image is required'
+    required: 'color is required'
+  },
+  bodyStyle: {
+    type: String,
+    required: 'color is required'
+  },
+  kilometers: {
+    type: String,
+    required: 'color is required'
+  },
+  origin: {
+    type: String,
+    required: 'color is required'
+  },
+  condition: {
+    type: String,
+    required: 'color is required'
+  },
+  engineType: {
+    type: String,
+    required: 'color is required'
+  },
+  cylender: {
+    type: String,
+    required: 'color is required'
+  },
+  transmission: {
+    type: String,
+    required: 'color is required'
+  },
+  driveType: {
+    type: String,
+    required: 'color is required'
+  },
+  technologyOptions: {
+    type: [String]
+  },
+  exteriorOptions: {
+    type: [String]
+  },
+  interiorOptions: {
+    type: [String]
+  },
+  saftyOptions: {
+    type: [String]
   },
   images: {
-    type: [String]
+    type: [Schema.Types.Mixed]
+  },
+  bodyReport: {
+    type: Schema.Types.Mixed
+  },
+  bodyCondition: {
+    type: Schema.Types.Mixed
   },
   price: {
     type: Number,
@@ -33,6 +83,7 @@ var PostSchema = new Schema({
   },
   country: {
     type: String,
+    default: 'Jordan',
     required: 'city is required'
   },
   created_at: {
@@ -42,6 +93,18 @@ var PostSchema = new Schema({
   updated_at: {
     type: Date,
     default: Date.now
+  },
+  title: {
+    type: String,
+    required: 'title is required'
+  },
+  notes: {
+    type: String,
+    required: 'notes is required'
+  },
+  phone: {
+    type: String,
+    required: 'phone is required'
   },
   status: {
     type: String,

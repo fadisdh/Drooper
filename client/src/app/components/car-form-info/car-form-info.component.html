@@ -1,31 +1,31 @@
 <form class="form" (submit)="onSubmit()">
   <div class="input-container">
     <label>Body Style</label>
-    <select name="bodyStyle" [(ngModel)]="info.bodyStyle">
+    <select name="bodyStyle" [(ngModel)]="data.bodyStyle">
       <option *ngFor="let bodyStyle of bodyStyles" [value]="bodyStyle">{{ bodyStyle }}</option>
     </select>
   </div>
 
   <div class="input-container">
     <label>Kilometers</label>
-    <select name="kilometers" [(ngModel)]="info.kilometers">
+    <select name="kilometers" [(ngModel)]="data.kilometers">
       <option *ngFor="let kilometer of kilometers" [value]="kilometer">{{ kilometer }}</option>
     </select>
   </div>
 
   <div class="input-container">
     <label>Origin</label>
-    <select name="origin" [(ngModel)]="info.origin">
+    <select name="origin" [(ngModel)]="data.origin">
       <option *ngFor="let origin of origins" [value]="origin">{{ origin }}</option>
     </select>
   </div>
 
   <div class="input-container">
     <label>Condition</label>
-    <select name="condition" [(ngModel)]="info.condition">
+    <select name="condition" [(ngModel)]="data.condition">
       <option *ngFor="let condition of conditions" [value]="condition">{{ condition }}</option>
     </select>
   </div>
 
-  <button md-raised-button type="submit" class="primary">Next <md-icon>chevron_right</md-icon></button>
+  <button mat-raised-button type="submit" class="primary">Next <mat-icon>chevron_right</mat-icon></button>
 </form>

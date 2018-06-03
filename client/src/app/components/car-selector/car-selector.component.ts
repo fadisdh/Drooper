@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./car-selector.component.scss']
 })
 export class CarSelectorComponent implements OnInit {
+  @Output() select = new EventEmitter<any>();
+
   private step: number = 1;
   private make: string;
   private model: string;
@@ -29,7 +31,12 @@ export class CarSelectorComponent implements OnInit {
 
   onYearSelect(years) {
     this.years = years;
-    this.router.navigateByUrl(`/posts?make=${this.make}&model=${this.model}&minYear=${this.years.min}&maxYear=${this.years.max}`);
+    this.select.emit({
+      make: this.make,
+      model: this.model,
+      minYear: this.years.min,
+      maxYear: this.years.max
+    });
   }
 
   goto(step) {

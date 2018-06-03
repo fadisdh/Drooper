@@ -1,24 +1,26 @@
 <div class="container">
   <img class="car" src="/assets/images/car-body.svg" alt="">
-  <div class="condition topLeft" (click)="toggleGood('topLeft')" [ngClass]="{active: this.condition.topLeft}">
-    <md-icon class="check">check</md-icon>
-    <md-icon class="error">close</md-icon>
+  <div class="condition topLeft" (click)="toggleGood('topLeft')" [ngClass]="{active: condition.topLeft && condition.topLeft !== 'false'}">
+    <mat-icon class="check">check</mat-icon>
+    <mat-icon class="error">close</mat-icon>
   </div>
-  <div class="condition topRight" (click)="toggleGood('topRight')" [ngClass]="{active: this.condition.topRight}">
-    <md-icon class="check">check</md-icon>
-    <md-icon class="error">close</md-icon>
+  <div class="condition topRight" (click)="toggleGood('topRight')" [ngClass]="{active: condition.topRight && condition.topRight !== 'false'}">
+    <mat-icon class="check">check</mat-icon>
+    <mat-icon class="error">close</mat-icon>
   </div>
-  <div class="condition bottomLeft" (click)="toggleGood('bottomLeft')" [ngClass]="{active: this.condition.bottomLeft}">
-    <md-icon class="check">check</md-icon>
-    <md-icon class="error">close</md-icon>
+  <div class="condition bottomLeft" (click)="toggleGood('bottomLeft')" [ngClass]="{active: condition.bottomLeft && condition.bottomLeft !== 'false'}">
+    <mat-icon class="check">check</mat-icon>
+    <mat-icon class="error">close</mat-icon>
   </div>
-  <div class="condition bottomRight" (click)="toggleGood('bottomRight')" [ngClass]="{active: this.condition.bottomRight}">
-    <md-icon class="check">check</md-icon>
-    <md-icon class="error">close</md-icon>
+  <div class="condition bottomRight" (click)="toggleGood('bottomRight')" [ngClass]="{active: condition.bottomRight && condition.bottomRight !== 'false'}">
+    <mat-icon class="check">check</mat-icon>
+    <mat-icon class="error">close</mat-icon>
   </div>
 </div>
 <div class="text">{{ goods }} Good Chassis</div>
-<div class="file">
-  <input type="file" (change)="fileUpload($event)">
-  <img *ngIf="img" [src]="img" class="preview">
-</div>
+<label *ngIf="uploadedImage()" class="report" [ngClass]="{border: !disabled}">
+  <div class="content">
+    <input *ngIf="!disabled" type="file" accept="image/*;capture=camera" (change)="fileUpload($event)">
+    <img [src]="uploadedImage()">
+  </div>
+</label>

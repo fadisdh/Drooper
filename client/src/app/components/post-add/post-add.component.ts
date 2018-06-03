@@ -1,7 +1,9 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Http } from '@angular/http';
 import { Post } from './../../models/post';
+import { PostService } from './../../services/post.service';
 import { technologyOptions, exteriorOptions, interiorOptions, saftyOptions } from './../../data/cars';
-import _ from 'lodash';
+import * as _ from "lodash";
 
 @Component({
   selector: 'post-add',
@@ -13,19 +15,19 @@ export class PostAddComponent implements OnInit {
   @Input() step: number = 0;
   private post: Post= new Post();
   private steps: string[] = [
+    'Pictures',
     'Make',
     'Model',
     'Year',
     'Color',
     'Main Information',
-    'Engine & Transmission',
+    'Engine',
     'Techology',
     'Exterior Options',
     'Interior Options',
     'Safty Options',
     'Body Condition',
     'Post Information',
-    'Pictures',
     'Publish Your Car'
   ];
   private navAnimation = null;
@@ -35,10 +37,10 @@ export class PostAddComponent implements OnInit {
   private interiorOptions = _.cloneDeep(interiorOptions);
   private saftyOptions = _.cloneDeep(saftyOptions);
 
-  constructor() { }
+  constructor(private http: Http, private postService: PostService) { }
 
   ngOnInit() {
-    this.navItemWidth = window.outerWidth / 3;
+    this.navItemWidth = this.navRef.nativeElement.offsetWidth / 3;
   }
 
   next(){
@@ -52,7 +54,6 @@ export class PostAddComponent implements OnInit {
   goto(step){
     if(step < 0 || step > this.steps.length - 1) return;
     this.step = step;
-    window.scrollTo(0, 0);
 
     let start = this.navRef.nativeElement.scrollLeft;
     let end = (this.step - 1) * this.navItemWidth;
@@ -68,6 +69,11 @@ export class PostAddComponent implements OnInit {
       }
     }, 10);
 
+  }
+
+  imageUploaded(images){
+    if(images.bubbles) return;
+    this.post.images = images;
   }
 
   makeSelected(make){
@@ -90,6 +96,7 @@ export class PostAddComponent implements OnInit {
 
   yearSelected(years){
     this.post.year = years.min;
+    this.post.title = `${this.post.year} ${this.post.make} ${this.post.model}`;
     this.next();
   }
 
@@ -99,21 +106,48 @@ export class PostAddComponent implements OnInit {
   }
 
   infoFormSubmited(data){
-    this.post.mainInfo = data;
+    this.post.bodyStyle = data.bodyStyle;
+    this.post.kilometers = data.kilometers;
+    this.post.origin = data.origin;
+    this.post.condition = data.condition;
     this.next();
   }
 
   engineFormSubmited(data){
-    this.post.engineInfo = data;
+    this.post.engineType = data.engineType;
+    this.post.cylender = data.cylender;
+    this.post.transmission = data.transmission;
+    this.post.driveType = data.driveType;
     this.next();
   }
 
   optionsCahnged(key, options){
+    if(options.bubbles) return;
     this.post[key] = options;
   }
 
   postFormSubmited(data){
-    this.post.postInfo = data;
+    this.post.title = data.title;
+    this.post.price = data.price;
+    this.post.notes = data.notes;
+    this.post.city = data.city;
+    this.post.phone = data.phone;
     this.next();
+  }
+
+  carBodySubmit(data){
+    this.post.bodyReport = data.report;
+    this.post.bodyCondition = data.condition;
+  }
+
+  publish(){
+    this.postService.savePost(this.post.formData()).subscribe(
+      response => {
+        console.log(response);
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 }

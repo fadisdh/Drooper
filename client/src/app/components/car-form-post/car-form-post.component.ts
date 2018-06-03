@@ -16,7 +16,7 @@ export class CarFormPostComponent implements OnInit {
   constructor() {
     this.data = {
       title: '',
-      price: '',
+      price: 'JOD 0',
       notes: '',
       city: defaultCity,
       country: defaultCountry,
@@ -25,7 +25,11 @@ export class CarFormPostComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.value) this.data = this.value;
+    if(this.value.title) this.data.title = this.value.title;
+    if(this.value.price) this.data.price = this.value.price;
+    if(this.value.notes) this.data.notes = this.value.notes;
+    if(this.value.city) this.data.city = this.value.city;
+    if(this.value.phone) this.data.phone = this.value.phone;
   }
 
   onSubmit() {

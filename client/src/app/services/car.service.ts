@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Make } from './../models/make';
 import { Model } from './../models/model';
 import { cars as carData } from './../data/cars';
-import _  from 'lodash';
+import * as _ from "lodash";
 
 @Injectable()
 export class CarService {

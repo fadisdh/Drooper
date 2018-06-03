@@ -1,0 +1,42 @@
+<mat-grid-list cols="2" rowHeight="4:3" gutterSize="13px">
+  <mat-grid-tile colspan="2" rowspan="2">
+    <label class="picture">
+      <input type="file" name="images[]" accept="image/*;capture=camera" (change)="fileUpload(0, $event)">
+      <div class="content">
+        <img [src]="getImage(0)" alt="">
+      </div>
+    </label>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <label class="picture">
+      <input type="file" name="images[]" accept="image/*;capture=camera" (change)="fileUpload(1, $event)">
+      <div class="content">
+        <img [src]="getImage(1)" alt="">
+      </div>
+    </label>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <label class="picture">
+      <input type="file" name="images[]" accept="image/*;capture=camera" (change)="fileUpload(2, $event)">
+      <div class="content">
+        <img [src]="getImage(2)" alt="">
+      </div>
+    </label>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <label class="picture">
+      <input type="file" name="images[]" accept="image/*;capture=camera" (change)="fileUpload(3, $event)">
+      <div class="content">
+        <img [src]="getImage(3)" alt="">
+      </div>
+    </label>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <label class="picture">
+      <input type="file" name="images[]" accept="image/*;capture=camera" (change)="fileUpload(4, $event)">
+      <div class="content">
+        <img [src]="getImage(4)" alt="">
+      </div>
+    </label>
+  </mat-grid-tile>
+</mat-grid-list>

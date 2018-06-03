@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import _ from 'lodash';
+import * as _ from "lodash";
 
 @Component({
   selector: 'option-list',
@@ -19,15 +19,16 @@ export class OptionListComponent implements OnInit {
     this.options.push({title: '', value: false, disabled: false, focus: true});
   }
 
-  onTitleChanged(option) {
-    if(option.title){
-      option.value = true;
-    }else{
+  optionTitleChanged(option) {
+    option.value = true;
+  }
+
+  onChange(option) {
+    if(!option.title){
       this.options.splice(this.options.indexOf(option), 1);
     }
 
-    let options = this.options.filter((option) => option.value === true).map((option) => option.title);
+    var options = this.options.filter((option) => option.value === true).map((option) => option.title);
     this.change.emit(options);
   }
-
 }

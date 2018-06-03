@@ -88,28 +88,25 @@ a{
     padding: 8px;
     font-size: 14px;
     border: 1px solid #CCC;
-    box-shadow: 0 0 3px #CCC;
+    box-shadow: 0;
     border-radius: 2px;
+    background: #FFF;
 
     &:hover, &:focus{
       border-color: #999;
       outline: none;
-      box-shadow: 0 0 3px #999;
     }
 
     &.ng-invalid.ng-touched, &.ng-invalid.ng-dirty {
       border-color: #C62828;
-      box-shadow: 0 0 3px #C62828;
     }
 
     &.ng-valid.ng-touched, &.ng-valid.ng-dirty {
       border-color: #558B2F;
-      box-shadow: 0 0 3px #558B2F;
     }
 
     &.no-validation {
       border-color: #CCC !important;
-      box-shadow: 0 0 3px #CCC !important;
     }
   }
 
@@ -126,7 +123,7 @@ a{
     height: 24px;
   }
 
-  md-icon, md-spinner{
+  mat-icon, mat-spinner{
     font-size: 24px;
     width: 24px;
     height: 24px;
@@ -138,7 +135,7 @@ a{
       box-shadow: 0 0 3px #558B2F;
     }
 
-    md-icon{
+    mat-icon{
       color: #558B2F;
     }
   }
@@ -149,7 +146,7 @@ a{
       box-shadow: 0 0 3px #C62828;
     }
 
-    md-icon{
+    mat-icon{
       color: #C62828
     }
   }
@@ -180,7 +177,7 @@ button.primary{
   }
 }
 
-button[md-fab]{
+button[mat-fab], a[mat-fab]{
   position: fixed;
   bottom: 16px;
   right: 16px;

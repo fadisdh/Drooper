@@ -12,8 +12,8 @@ export class YearListComponent implements OnInit {
   @Input() range: boolean = true;
   @Output() select = new EventEmitter<{min: number, max: number}>();
   private years: number[] = [];
-  private max: number;
-  private min: number;
+  private max: number = 0;
+  private min: number = 0;
 
   constructor(private carService: CarService) {
     this.years = this.carService.years();
@@ -40,18 +40,18 @@ export class YearListComponent implements OnInit {
       }
     }else{
       this.max = year;
-      this.min = null;
+      this.min = 0;
     }
   }
 
   selectAll() {
-    this.min = null;
-    this.max = null;
+    this.min = 0;
+    this.max = 0;
   }
 
   done() {
     if(!this.max){
-      this.select.emit(null);
+      this.select.emit({min: 0, max: 0});
     }else{
       this.min = this.min || this.max;
       this.select.emit({min: this.min, max: this.max});

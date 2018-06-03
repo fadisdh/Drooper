@@ -27,4 +27,8 @@ export class FiltersComponent implements OnInit {
   yearsSelected(years) {
     this.result.emit({ minYear: years.min, maxYear: years.max });
   }
+
+  priceSelected(price) {
+    this.result.emit({ minPrice: price.min, maxPrice: price.max });
+  }
 }

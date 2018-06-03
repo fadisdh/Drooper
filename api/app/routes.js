@@ -1,5 +1,8 @@
 'use strict';
 
+var multer  = require('multer');
+var upload = multer({ dest: 'uploads/' });
+
 module.exports = function(routes) {
   var authController = require('./controllers/authController'),
       userController = require('./controllers/userController'),
@@ -25,10 +28,12 @@ module.exports = function(routes) {
   // post Routes
   routes.route('/posts')
     .get(postController.index)
-    .post(auth.isUser, postController.create);
+    .post(auth.isUser, upload.fields([{name: 'bodyReport', maxCount: 1}, {name: 'images[]', maxCount: 5}]), postController.create);
+  routes.route('/posts/me')
+    .get(auth.isUser, postController.myPosts);
   routes.route('/posts/:postId')
     .get(postController.show)
-    .put(postController.update)
+    .put(auth.isUser, postController.update)
     .delete(auth.isAdmin, postController.delete);
 
   return routes;

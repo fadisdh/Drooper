@@ -1,11 +1,11 @@
-<md-list>
-  <md-list-item *ngFor="let option of options">
-    <md-checkbox [checked]="option.value" color="primary" [(ngModel)]="option.value">
-      <input type="text" [(ngModel)]="option.title" [disabled]="option.disabled" (change)="onTitleChanged(option)" (blur)="onTitleChanged(option)" [focus]="option.focus">
-    </md-checkbox>
-  </md-list-item>
-  <md-list-item (click)="addOption()">
-    <md-icon>add</md-icon>
-    Add a new option
-  </md-list-item>
-</md-list>
+<mat-list>
+  <mat-list-item *ngFor="let option of options">
+    <mat-checkbox [checked]="option.value" color="primary" [(ngModel)]="option.value" (change)="onChange(option)">
+      <input type="text" [(ngModel)]="option.title" [disabled]="option.disabled" tabindex="-1" [focus]="option.focus" (change)="optionTitleChanged(option)">
+    </mat-checkbox>
+  </mat-list-item>
+  <mat-list-item (click)="addOption()">
+    <mat-icon>add</mat-icon>
+    <span>Add a new option</span>
+  </mat-list-item>
+</mat-list>

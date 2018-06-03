@@ -1,0 +1,8 @@
+<div class="price-container">
+  <nouislider [config]="sliderConfig"
+              [(ngModel)]="priceRange"
+              [style]="{height: '500px'}">
+  </nouislider>
+</div>
+
+<button mat-fab (click)="done()" color="primary"><mat-icon>check</mat-icon></button>

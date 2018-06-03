@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Router, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { UserService } from './services/user.service';
-import * as firebase from 'firebase/app';
+import { MenuService } from './services/menu.service';
 import 'rxjs/add/operator/map';
 
 import { Post } from './models/post';
@@ -27,25 +26,8 @@ import { Post } from './models/post';
   ]
 })
 export class AppComponent {
-  private postsObservable: FirebaseListObservable<any>;
-  private cars: FirebaseObjectObservable<any>;
-  private years: string[] = [];
-  private newPost: Post;
 
-  private make: string;
-  private model: string;
-  private year: string;
-
-  private showMenu: boolean = false;
-
-  constructor(private db: AngularFireDatabase, private userService: UserService, private router: Router) {
-    this.newPost = new Post();
-    db.object('/cars').subscribe(snapshot => this.cars = snapshot);
-
-    for(let i = 2018; i >= 1970; i--){
-      this.years.push(i.toString());
-    }
-  }
+  constructor(private userService: UserService, private menuService: MenuService, private router: Router) {}
 
   ngOnInit() {
     this.router.events.subscribe((evt) => {
@@ -54,38 +36,29 @@ export class AppComponent {
       }
       window.scrollTo(0, 0)
     });
-  }
 
-  makeChanged() {
-    this.model = null;
-    this.year = null;
-  }
-
-  modelChanged() {
-    this.year = null;
-  }
-
-  createPost(event){
-    event.preventDefault();
-    this.postsObservable.push(this.newPost);
-    this.newPost = new Post();
-  }
-
-  closeMenu() {
-    this.showMenu = false;
+    this.userService.userStatus.subscribe((status) => {
+      this.menuService.closeMenu();
+    });
   }
 
   openMenu(){
-    this.showMenu = true;
+    this.menuService.openMenu();
   }
 
-  openLoginForm(): number {
-    if(this.userService.showForm == 'login') return 0;
-    if(this.userService.showForm == 'register') return 1;
-    return null;
+  closeMenu(){
+    this.menuService.closeMenu();
   }
 
   closeLoginForm() {
     this.userService.closeForm();
+  }
+
+  addPost(){
+    if(this.userService.user){
+      this.router.navigateByUrl('/new');
+    }else{
+      this.userService.openLoginForm('/new');
+    }
   }
 }

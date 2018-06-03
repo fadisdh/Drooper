@@ -1,6 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose'),
+    auth = require('../helpers/auth'),
     User = mongoose.model('User');
 
 exports.index = function(req, res) {
@@ -38,7 +39,13 @@ exports.create = function(req, res) {
   new_user.save(function(err, user) {
     if (err)
       res.status(400).json(err);
-    res.json(user);
+
+      auth.login(new_user.email, new_user.password, function(token, user) {
+        if(token) {
+          res.send({ token: token, user: user });
+        }
+        else res.status(400).send({ error: 'Wrong email and/or password' })
+      });
   });
 };
 

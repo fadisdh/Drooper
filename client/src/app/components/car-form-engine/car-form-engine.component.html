@@ -1,13 +1,13 @@
 <form class="form" (submit)="onSubmit()">
   <div class="input-container">
     <label>Engine Type</label>
-    <select name="engineType" [(ngModel)]="data.engineTypes">
+    <select name="engineType" [(ngModel)]="data.engineType">
       <option *ngFor="let engineType of engineTypes" [value]="engineType">{{ engineType }}</option>
     </select>
   </div>
 
   <div class="input-container">
-    <label>Cyender</label>
+    <label>Cylender</label>
     <select name="cylender" [(ngModel)]="data.cylender">
       <option *ngFor="let cylender of cylenders" [value]="cylender">{{ cylender }}</option>
     </select>
@@ -27,5 +27,5 @@
     </select>
   </div>
 
-  <button md-raised-button type="submit" class="primary">Next <md-icon>chevron_right</md-icon></button>
+  <button mat-raised-button type="submit" class="primary">Next <mat-icon>chevron_right</mat-icon></button>
 </form>

@@ -4,14 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule }    from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import { TextMaskModule } from 'angular2-text-mask';
 import { NouisliderModule } from 'ng2-nouislider';
-import {FocusModule} from 'angular2-focus';
+import { FocusModule } from 'angular2-focus';
+import { NgxCarouselModule } from 'ngx-carousel';
+import { MomentModule } from 'angular2-moment';
 
-import { MdButtonModule, MdTabsModule, MdListModule, MdGridListModule, MdCardModule, MdCheckboxModule, MdIconModule, MdInputModule, MdSnackBarModule, MdProgressSpinnerModule, MdSnackBar } from '@angular/material';
+import { MatButtonModule, MatTabsModule, MatListModule, MatGridListModule, MatCardModule, MatCheckboxModule, MatIconModule, MatInputModule, MatSnackBarModule, MatProgressSpinnerModule, MatSnackBar } from '@angular/material';
 import 'hammerjs';
 
 import { AppComponent } from './app.component';
@@ -23,6 +23,7 @@ import { CurrencyPipe } from './pipes/currency.pipe';
 import { UserService } from './services/user.service';
 import { CarService } from './services/car.service';
 import { PostService } from './services/post.service';
+import { MenuService } from './services/menu.service';
 
 import { MakeListComponent } from './components/make-list/make-list.component';
 import { ModelListComponent } from './components/model-list/model-list.component';
@@ -47,24 +48,24 @@ import { CarFormEngineComponent } from './components/car-form-engine/car-form-en
 import { CarFormPostComponent } from './components/car-form-post/car-form-post.component';
 import { OptionListComponent } from './components/option-list/option-list.component';
 import { CarBodyComponent } from './components/car-body/car-body.component';
-
-export const firebaseConfig = {
-  apiKey: "AIzaSyD2-vjIgy8eyCGsewppm_ua9eklfkpcjJM",
-  authDomain: "wagon-755dc.firebaseapp.com",
-  databaseURL: "https://wagon-755dc.firebaseio.com",
-  projectId: "wagon-755dc",
-  storageBucket: "",
-  messagingSenderId: "941945498795"
-};
+import { CarFormPublishComponent } from './components/car-form-publish/car-form-publish.component';
+import { PostDetailsComponent } from './components/post-details/post-details.component';
+import { CarFormPicturesComponent } from './components/car-form-pictures/car-form-pictures.component';
+import { UserPostsComponent } from './components/user-posts/user-posts.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { PriceRangeComponent } from './components/price-range/price-range.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'posts',      component: PostListComponent },
+  { path: 'post/:id',      component: PostDetailsComponent },
   { path: '',
     redirectTo: '/home',
     pathMatch: 'full'
   },
   { path: 'new', component: PostAddComponent },
+  { path: 'user/profile', component: UserProfileComponent },
+  { path: 'user/posts', component: UserPostsComponent },
   { path: '**', component: ErrorComponent }
 ];
 
@@ -96,7 +97,13 @@ const routes: Routes = [
     CarFormEngineComponent,
     CarFormPostComponent,
     OptionListComponent,
-    CarBodyComponent
+    CarBodyComponent,
+    CarFormPublishComponent,
+    PostDetailsComponent,
+    CarFormPicturesComponent,
+    UserPostsComponent,
+    UserProfileComponent,
+    PriceRangeComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -105,24 +112,24 @@ const routes: Routes = [
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule,
     CurrencyMaskModule,
     TextMaskModule,
     NouisliderModule,
     FocusModule,
-    MdButtonModule,
-    MdTabsModule,
-    MdListModule,
-    MdGridListModule,
-    MdCardModule,
-    MdCheckboxModule,
-    MdIconModule,
-    MdInputModule,
-    MdProgressSpinnerModule,
-    MdSnackBarModule
+    NgxCarouselModule,
+    MomentModule,
+    MatButtonModule,
+    MatTabsModule,
+    MatListModule,
+    MatGridListModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatIconModule,
+    MatInputModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
-  providers: [UserService, CarService, PostService, MdSnackBar],
+  providers: [UserService, CarService, PostService, MenuService, MatSnackBar],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

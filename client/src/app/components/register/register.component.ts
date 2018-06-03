@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { unique, UniqueValidatorDirective } from './../../directives/unique-validator.directive'
 import { User } from './../../models/user';
 import { UserService } from './../../services/user.service';
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(private userService: UserService,
               private formBuilder: FormBuilder,
-              private snackBar: MdSnackBar) { }
+              private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.formGroup = this.createForm();
@@ -63,8 +63,8 @@ export class RegisterComponent implements OnInit {
       password: this.formGroup.value.password,
       phone: this.formGroup.value.phone
     })
-    .subscribe((user: User) => {
-      this.success.emit(user);
+    .subscribe((data) => {
+      this.success.emit(data.user);
       this.userService.closeForm();
     },
     (err: Error) => {

@@ -1,0 +1,32 @@
+mat-grid-list{
+  margin: 12px;
+
+  mat-grid-tile{
+    .picture{
+      display: block;
+      width: 100%;
+      height: 95%;
+      border: 2px dashed #CCC;
+      background: url(/assets/images/picture.svg) center center no-repeat;
+      background-size: 50% 50%;
+
+      .content{
+        width: 100%;
+        height: 100%;
+        background: center center no-repeat;
+        background-size: cover;
+
+        img{
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      input[type="file"]{
+        display: none;
+      }
+    }
+  }
+}

@@ -8,15 +8,15 @@
          (keyup)="searchChanged()">
 </div>
 
-<md-grid-list *ngIf="makes.length > 0" cols="3" rowHeight="1:1" gutterSize="5px">
-  <md-grid-tile *ngFor="let make of makes" [ngClass]="{active: make.id == value}">
+<mat-grid-list *ngIf="makes.length > 0" cols="3" rowHeight="1:1" gutterSize="5px">
+  <mat-grid-tile *ngFor="let make of makes" [ngClass]="{active: make.id == value}">
     <a class="make-box" (click)="onSelect(make.id)">
       <div class="img">
         <img [src]="make.logo" alt="">
       </div>
       <h3>{{ make.name }}</h3>
     </a>
-  </md-grid-tile>
-</md-grid-list>
+  </mat-grid-tile>
+</mat-grid-list>
 
 <error *ngIf="makes.length == 0" >No makes found</error>

@@ -7,8 +7,7 @@ import { UserService } from './../../services/user.service';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
-  @Input() selectedIndex = 0;
-  @Output() close: EventEmitter<any> = new EventEmitter();
+  @Input() tab = 0;
 
   constructor(private userService: UserService) { }
 

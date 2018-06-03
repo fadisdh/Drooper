@@ -1,7 +1,9 @@
-<md-grid-list class="models" cols="4" rowHeight="1:1" gutterSize="5px">
-  <md-grid-tile *ngIf="showAll" (click)="onSelect('')" colspan="4">All Models</md-grid-tile>
-  <md-grid-tile *ngFor="let model of models" (click)="onSelect(model.id)" [ngClass]="{active: model.id == value}">
-    {{ model.name }}
-  </md-grid-tile>
-  <md-grid-tile *ngIf="showOthers" (click)="onSelect('others')" [ngClass]="{active: value == 'others'}">Others</md-grid-tile>
-</md-grid-list>
+<mat-grid-list class="models" cols="4" rowHeight="1:1" gutterSize="5px">
+  <mat-grid-tile *ngIf="showAll" (click)="onSelect('')" colspan="4">All Models</mat-grid-tile>
+  <mat-grid-tile *ngFor="let model of models" (click)="onSelect(model.id)" [ngClass]="{active: model.id == value}">
+    <div>{{ model.name }}</div>
+  </mat-grid-tile>
+  <mat-grid-tile *ngIf="showOthers" (click)="onSelect('others')" [ngClass]="{active: value == 'others'}">
+    <div>Others</div>
+  </mat-grid-tile>
+</mat-grid-list>

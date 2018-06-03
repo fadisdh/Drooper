@@ -17,7 +17,7 @@ export class CarFormEngineComponent implements OnInit {
   private data: {[key: string]: string};
   constructor() {
     this.data = {
-      engineTypes: defaultEngineType,
+      engineType: defaultEngineType,
       cylender: defaultCylender,
       transmission: defaultTransmission,
       driveType: defaultDriveType
@@ -25,7 +25,10 @@ export class CarFormEngineComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.value) this.data = this.value;
+    if(this.value.engineType) this.data.engineType = this.value.engineType;
+    if(this.value.cylender) this.data.cylender = this.value.cylender;
+    if(this.value.transmission) this.data.transmission = this.value.transmission;
+    if(this.value.driveType) this.data.driveType = this.value.driveType;
   }
 
   onSubmit() {

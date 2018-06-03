@@ -1,22 +1,20 @@
-<a class="logo" routerLink="/home">
-  <img src="/assets/images/logo.svg" alt="wagon">
-</a>
-<a (click)="openMenu()" class="menu-link">
-  <md-icon>menu</md-icon>
-</a>
-<a routerLink="/new" class="add-link">
-  <md-icon>add</md-icon>
-</a>
-<modal *ngIf="showMenu" (close)="closeMenu()" [@slide]>
-  <main-menu></main-menu>
-</modal>
+<div class="container">
+  <a class="logo" routerLink="/home">
+    <img src="/assets/images/logo.svg" alt="wagon">
+  </a>
+  <a (click)="openMenu()" class="menu-link">
+    <mat-icon>menu</mat-icon>
+  </a>
+  <a (click)="addPost()" class="add-link">
+    <mat-icon>add</mat-icon>
+  </a>
 
-<modal *ngIf="false">
-  <post-add></post-add>
-</modal>
+  <modal *ngIf="menuService.showMenu" (close)="closeMenu()" [@slide]>
+    <main-menu></main-menu>
+  </modal>
+  <modal *ngIf="this.userService.showForm" (close)="closeLoginForm()" [@slide]>
+    <auth [tab]="this.userService.showForm"></auth>
+  </modal>
 
-<modal *ngIf="this.userService.showForm" (close)="closeLoginForm()" [@slide]>
-  <auth></auth>
-</modal>
-
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
+</div>

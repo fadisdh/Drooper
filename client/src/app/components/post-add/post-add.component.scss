@@ -2,6 +2,10 @@
   margin: 0 16px;
 }
 
+.page{
+  margin-bottom: 16px;
+}
+
 .navigation{
   overflow-x: hidden;
   font-size: 12px;
@@ -14,6 +18,7 @@
     padding: 8px 0;
     text-align: center;
     color: #AAA;
+    min-width: 100px;
 
     &.active{
       .point, .bar.half2.active, .bar.half{

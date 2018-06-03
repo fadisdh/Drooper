@@ -52,7 +52,6 @@ export class PostListComponent implements OnInit {
   }
 
   filterChanged(data) {
-    console.log('inside filter changed');
     this.filter = null;
     if(data){
       if(data.make){
@@ -60,9 +59,15 @@ export class PostListComponent implements OnInit {
         this.filters.model = '';
       }
       if(data.model) this.filters.model = data.model;
-      if(data.minYear) this.filters.minYear = data.minYear;
-      if(data.maxYear) this.filters.maxYear = data.maxYear;
-      this.router.navigateByUrl(`/posts?make=${this.filters.make}&model=${this.filters.model}&minYear=${this.filters.minYear}&maxYear=${this.filters.maxYear}`);
+      if(data.minYear >= 0) this.filters.minYear = data.minYear;
+      if(data.maxYear >= 0) this.filters.maxYear = data.maxYear;
+      if(data.minPrice >= 0) this.filters.minPrice = data.minPrice;
+      if(data.maxPrice >= 0) this.filters.maxPrice = data.maxPrice;
+      this.postService.navigateToPosts(this.filters);
     }
+  }
+
+  onClick(id: string) {
+    this.router.navigate(['/post', id]);
   }
 }

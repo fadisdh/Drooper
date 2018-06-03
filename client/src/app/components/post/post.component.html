@@ -1,12 +1,12 @@
-<md-card class="post" md-ink-ripple="#333">
-  <md-card-header>
-    <img md-card-avatar [src]="post.user.image" alt="">
-    <md-card-title class="name">{{ post.user.name }}</md-card-title>
-    <md-card-subtitle>{{ post.updated_at | fromNow }}</md-card-subtitle>
-  </md-card-header>
-  <img md-card-image [src]="post.image" alt="">
-  <md-card-content>
+<mat-card *ngIf="post" class="post" mat-ink-ripple="#333">
+  <mat-card-header>
+    <img mat-card-avatar [src]="post.user && post.user.image ? post.user.image : '/assets/images/default-user.jpg'" alt="">
+    <mat-card-title class="name">{{ post.user ? post.user.name : 'Drooper User' }}</mat-card-title>
+    <mat-card-subtitle><time>{{ post.updated_at | amTimeAgo }}</time></mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="post.images ? config.host + post.images[0].large : '/assets/images/default-post.jpg'" alt="">
+  <mat-card-content>
     <h3 class="title">{{ post.year }} {{ post.make }} {{ post.model }} - <span class="price">{{ post.price | currency:'JD' }}</span></h3>
     <h4 class="location">{{ post.city }}, {{ post.country }}</h4>
-  </md-card-content>
-</md-card>
+  </mat-card-content>
+</mat-card>

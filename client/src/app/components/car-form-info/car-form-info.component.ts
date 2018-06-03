@@ -14,9 +14,9 @@ export class CarFormInfoComponent implements OnInit {
   private origins: string[] = origins;
   private kilometers: string[] = kilometers;
 
-  private info: {[key: string]: string};
+  private data: {[key: string]: string};
   constructor() {
-    this.info = {
+    this.data = {
       bodyStyle: defaultBodyStyle,
       kilometers: defaultKilometers,
       origin: defaultOrigin,
@@ -25,10 +25,13 @@ export class CarFormInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.value) this.info = this.value;
+    if(this.value.bodyStyle) this.data.bodyStyle = this.value.bodyStyle;
+    if(this.value.kilometers) this.data.kilometers = this.value.kilometers;
+    if(this.value.origin) this.data.origin = this.value.origin;
+    if(this.value.condition) this.data.condition = this.value.condition;
   }
 
   onSubmit() {
-    this.submit.emit(this.info);
+    this.submit.emit(this.data);
   }
 }
